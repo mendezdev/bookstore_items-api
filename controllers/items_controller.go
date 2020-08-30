@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/mendezdev/bookstore_items-api/domain/items"
@@ -31,12 +30,11 @@ func (c *itemsController) Create(w http.ResponseWriter, r *http.Request) {
 		Seller: oauth.GetCallerId(r),
 	}
 
-	result, err := services.ItemsService.Create(item)
+	_, err := services.ItemsService.Create(item)
 	if err != nil {
 		//TODO return error json to the user
 	}
 
-	fmt.Println(result)
 	//TODO return created item as JSON with HTTP status 201 - Created
 }
 
